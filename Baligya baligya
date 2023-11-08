@@ -1,0 +1,72 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication18;
+
+import javax.swing.JOptionPane;
+
+
+
+/**
+ *
+ * @author Bocado_CPE
+ */
+public class JavaApplication18 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        String[] Items = {"Keychain", "Polaroid", "Ref Magnet", "Tarpaulin 2x3 size"};
+        double[] prices = {20.0, 5.0, 35.0, 80.0,};
+        int[] supply = {1000, 1000, 1000, 1000, 1000};
+
+        boolean continueShopping = true;
+
+        while (continueShopping) {
+            JOptionPane.showMessageDialog(null, "Welcome to J&R Shop:");
+
+            String ItemsChoice = (String) JOptionPane.showInputDialog(null, "Select an item:", "Item Selection",
+                    JOptionPane.PLAIN_MESSAGE, null, Items, Items[0]);
+
+            double price = prices[getIndex(Items, ItemsChoice)];
+            
+            int quantity = Integer.parseInt(JOptionPane.showInputDialog(null, "How many " + ItemsChoice + "s do you want to buy?"));
+
+            int index = getIndex(Items, ItemsChoice);
+
+            if (quantity > supply[index]) {
+                JOptionPane.showMessageDialog(null, "Sorry, there is not enough supply for " + ItemsChoice + ".");
+                continue;
+            }
+
+            double totalCost = price * quantity;
+
+            JOptionPane.showMessageDialog(null, "Your total cost is "+ totalCost);
+            
+            supply[index] -= quantity;
+
+            int response = JOptionPane.showConfirmDialog(null, "Thank you for purchasing our product. Do you want to make another purchase?", "Continue Shopping", JOptionPane.YES_NO_OPTION);
+
+            continueShopping = (response == JOptionPane.YES_OPTION);
+        }
+    }
+
+    private static int getIndex(String[] array, String value) {
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].equalsIgnoreCase(value)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+}
+
+    
+          
+
+
+
+    
