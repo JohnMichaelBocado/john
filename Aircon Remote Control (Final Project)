@@ -1,0 +1,69 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.digital;
+
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author PCL DAVAO DEL SUR
+ */
+public class Digital {
+        
+    public static double currentTemperature = 25.0;
+    public static boolean isPowerOn = false;
+
+    public static void main(String[] args) {
+        while (true) {
+            showRemoteControl();
+        }
+    }
+
+    private static void showRemoteControl() {
+        String[] options = {"Power On/Off", "Set Temperature", "Check Current State", "Exit"};
+        int choice = JOptionPane.showOptionDialog(
+                null,
+                "Choose a remote control option:",
+                "Air Conditioner Remote Control",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                options,
+                options[0]);
+
+        switch (choice) {
+            case 0 -> togglePower();
+            case 1 -> setDesiredTemperature();
+            case 2 -> checkCurrentState();
+            case 3 -> System.exit(0);
+        }
+    }
+
+    public static void togglePower() {
+        isPowerOn = !isPowerOn;
+        String powerStatus = isPowerOn ? "On" : "Off";
+        JOptionPane.showMessageDialog(null, "Power is " + powerStatus);
+    }
+
+    public static void setDesiredTemperature() {
+        if (isPowerOn) {
+            String inputTemperature = JOptionPane.showInputDialog("Enter desired temperature:");
+            double desiredTemperature = Double.parseDouble(inputTemperature);
+            JOptionPane.showMessageDialog(null, "Desired temperature set to: " + desiredTemperature + " °C");
+            adjustTemperature(desiredTemperature);
+        } else {
+            JOptionPane.showMessageDialog(null, "Power is off. Turn on the power first.");
+        }
+    }
+
+    public static void checkCurrentState() {
+        String powerStatus = isPowerOn ? "On" : "Off";
+        JOptionPane.showMessageDialog(null, "Power: " + powerStatus + "\nCurrent temperature is: " + currentTemperature + " °C");
+    }
+
+    public static void adjustTemperature(double desiredTemperature) {
+        currentTemperature = desiredTemperature;
+    }
+}
