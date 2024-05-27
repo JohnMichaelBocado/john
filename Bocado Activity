@@ -1,0 +1,87 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package CarProject;
+
+/**
+ *
+ * @author Administrator
+ */
+public class CarProject {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        
+        
+        
+    }
+    
+}
+
+
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package CarProject;
+
+/**
+ *
+ * @author Administrator
+ */
+public class Car {
+     private String make;
+    private String model;
+    private int year;
+
+    // Constructor
+    public Car(String make, String model, int year) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+    }
+
+    // Method to print details
+    public void printDetails() {
+        System.out.println("Car Make: " + make);
+        System.out.println("Car Model: " + model);
+        System.out.println("Car Year: " + year);
+    }
+}
+
+
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package CarProject;
+
+/**
+ *
+ * @author Administrator
+ */
+public class Main {
+    public static void main(String[] args) {
+        // Create Car instances
+        Car car1 = new Car("Toyota", "Camry", 2020);
+        Car car2 = new Car("Honda", "Civic", 2018);
+
+        // Print details of each car
+        System.out.println("Car 1 details:");
+        car1.printDetails();
+
+        System.out.println("\nCar 2 details:");
+        car2.printDetails();
+    }
+}
+     
+
+
+
+
+
